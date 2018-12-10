@@ -16,7 +16,7 @@
         <h1>Player</h1>
       </div>
 
-      <video width="640" height="480" controls>
+      <video id="video" width="640" height="480" controls>
         <source id="source" type="video/mp4"></source>
         Your browser does not support the video tag.
       </video>
@@ -24,6 +24,7 @@
 
     <script>
       const playlist = document.getElementById('playlist')
+      const video = document.getElementById('video')
       const source = document.getElementById('source')
 
       fetch('list.json').then((res) => {
@@ -51,7 +52,7 @@
       const play = (entry) => {
         fetch(`${entry.endpoint}/objects/batch`, {
           method: "POST",
-          body: {
+          body: JSON.stringify({
             operation: "download",
             transfers: [
               "basic"
@@ -63,7 +64,7 @@
               "oid": entry.oid,
               "size": entry.size
             }]
-          },
+          }),
           headers: {
             "Accept": "application/vnd.git-lfs+json",
             "Content-Type": "application/json"
@@ -72,11 +73,12 @@
           return res.json()
         }, (err) => {
           console.error(err)
-        }).then((video) => {
-          console.log(video)
+        }).then((res) => {
+          source.src = res.objects[0].actions.download.href
+          video.load()
+          video.play()
         })
       }
-
     </script>
   </body>
 </html>
