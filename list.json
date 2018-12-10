@@ -1,0 +1,32 @@
+[
+  {
+    "name": "DVqKW1ob9UI.mp4",
+    "title": "\"This is quality, such good squash!\" - MegaRally - Gaultier v Farag - US Open 2018",
+    "original": "https://www.youtube.com/watch?v=DVqKW1ob9UI",
+    "thumbnail": "https://img.youtube.com/vi/DVqKW1ob9UI/mqdefault.jpg",
+    "type": "git-lfs",
+    "endpoint": "https://github.com/squashai/media.git/info/lfs",
+    "oid": "220ebb4ab3dfc23af67b91ecde6c309013e6297ebce8ed641d1d52c62a439374",
+    "size": 21633860
+  },
+  {
+    "name":"F6UG6SZNdEY.mp4",
+    "title":"\"WE'RE NOT DONE YET!\" - Free Game Friday - Rodriguez v Rösner - Hong Kong 2018",
+    "original":"https://www.youtube.com/watch?v=F6UG6SZNdEY",
+    "thumbnail":"https://img.youtube.com/vi/F6UG6SZNdEY/mqdefault.jpg",
+    "type":"git-lfs",
+    "endpoint":"https://github.com/squashai/media.git/info/lfs",
+    "oid":"ccb1312f54afd7711037cae1edf2536b1aeaebecabb40d76323066b3966fa852",
+    "size": 175120592
+  },
+  {
+    "name":"ohtRSiQ-HPg.mp4",
+    "title":"Squash: Men's Round 3 Roundup - Hong Kong Open 2018",
+    "original":"https://www.youtube.com/watch?v=ohtRSiQ-HPg",
+    "thumbnail":"https://img.youtube.com/vi/ohtRSiQ-HPg/mqdefault.jpg",
+    "type":"git-lfs",
+    "endpoint":"https://github.com/squashai/media.git/info/lfs",
+    "oid":"1b388bf28410413e155039e3070c46f990bc339b81ac3f39206c98b0b42b4e32",
+    "size": 49825628
+  }
+]

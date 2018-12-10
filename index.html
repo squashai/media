@@ -1,12 +1,82 @@
 <html>
   <head>
     <title>Test page</title>
+    <script src="https://unpkg.com/unfetch/polyfill"></script>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
   </head>
   <body>
-    <h3>Video player should appear below</h3>
-    <video width="640" height="480" controls>
-      <source src="DVqKW1ob9UI.mp4" type="video/mp4"></source>
-      Your browser does not support the video tag.
-    </video>
+    <div class="w3-sidebar w3-light-grey w3-bar-block" style="width:25%">
+      <h3>Playlist</h3>
+      <ul id="playlist" class="w3-ul w3-card4"></ul>
+    </div>
+
+    <div style="margin-left:25%">
+
+      <div class="w3-container w3-teal">
+        <h1>Player</h1>
+      </div>
+
+      <video width="640" height="480" controls>
+        <source id="source" type="video/mp4"></source>
+        Your browser does not support the video tag.
+      </video>
+    </div>    
+
+    <script>
+      const playlist = document.getElementById('playlist')
+      const source = document.getElementById('source')
+
+      fetch('list.json').then((res) => {
+        return res.json()
+      }, (err) => {
+        console.error(err)
+      }).then((list) => {
+        list.forEach((entry) => {
+          const img = document.createElement('img')
+          img.src = entry.thumbnail
+          img.classList.add('w3-bar-item')
+          const title = document.createElement('span')
+          title.classList.add('w3-bar-item')
+          title.innerText = entry.title
+          const item = document.createElement('li')
+          item.appendChild(img)
+          item.appendChild(title)
+          item.onclick = () => {
+            play(entry)
+          }
+          playlist.appendChild(item)
+        })
+      })
+
+      const play = (entry) => {
+        fetch(`${entry.endpoint}/objects/batch`, {
+          method: "POST",
+          body: {
+            operation: "download",
+            transfers: [
+              "basic"
+            ],
+            ref: {
+              "name": "refs/heads/master"
+            },
+            objects: [{
+              "oid": entry.oid,
+              "size": entry.size
+            }]
+          },
+          headers: {
+            "Accept": "application/vnd.git-lfs+json",
+            "Content-Type": "application/json"
+          },
+        }).then((res) => {
+          return res.json()
+        }, (err) => {
+          console.error(err)
+        }).then((video) => {
+          console.log(video)
+        })
+      }
+
+    </script>
   </body>
 </html>
