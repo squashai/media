@@ -11,6 +11,6 @@ browser).
 Due to github.com not supporting pre-flight CORS check (OPTIONS before
 POST), there's no way to access `git-lfs` content from the browser.
 
-GitLab.com works relatively better at storing large files (it provides
-stable links).
+GitLab.com on the other hand provides permanent links and works quite
+decently at storing large files: https://gitlab.com/squashai/media
 
